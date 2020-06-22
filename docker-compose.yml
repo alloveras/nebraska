@@ -3,7 +3,7 @@ services:
   nebraska:
     build:
       context: .
-      dockerfile: Dockerfile.nebraska
+      dockerfile: Dockerfile
     ports:
       - 8000:8000
     command: |
@@ -13,9 +13,7 @@ services:
     depends_on:
       - "postgres"
   postgres:
-    build:
-      context: .
-      dockerfile: Dockerfile.postgres
+    image: quay.io/flatcar/nebraska-postgres
     volumes:
       - postgres-data:/nebraska/data
     ports:
